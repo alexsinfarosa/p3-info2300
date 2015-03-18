@@ -1,0 +1,59 @@
+/*=======================================
+=            base styles            =
+=======================================*/
+
+
+
+body {
+	-webkit-font-smoothing: antialiased;
+}
+
+p {
+	margin-bottom: $baseline;
+
+	a {
+		text-decoration: none;
+		// border-bottom: 1px solid $color-light-text;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
+
+ul, li {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style-type: none;
+	
+	a {
+		text-decoration: none;
+		font-family: $font-2;
+		
+		&:visited {
+			color: $color-light-text;
+		}
+
+		&:hover {
+			text-decoration: none;
+			color: $color-link-hover;
+		}
+	}
+}
+
+blockquote {
+	margin: 0;
+	font-style: italic;
+	
+	cite {
+		font-size: .75rem;
+		font-style: normal;
+
+		&:before {
+			content: "- ";
+		}
+	}
+}

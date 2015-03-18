@@ -1,0 +1,42 @@
+/*===========================================================
+=            style.scss - Author: Alex Sinfarosa            =
+===========================================================*/
+
+
+
+/* =Utilities */
+@import "utilities/variables",
+		"utilities/utilities";
+
+/* =Bootstrap */
+@import "utilities/myGrid";
+
+/* =Base */
+@import "base/normalize",
+		"base/base";
+
+/* =Fonts */
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700"),
+ 		url("http://fonts.googleapis.com/css?family=Raleway");
+ 		
+/* =Layout */
+@import "layout/header",
+		"layout/main",
+		"layout/footer";
+
+/* =Modules */
+@import "modules/btn",
+		"modules/carousel",
+		"modules/dividers",
+		"modules/iframe",
+		"modules/forms",
+		"modules/tables",
+		"modules/others";
+
+/* =Theme */
+@import "theme/theme";
+
+
+
+
+

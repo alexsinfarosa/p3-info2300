@@ -1,0 +1,127 @@
+/*=================================
+=            utilities            =
+=================================*/
+
+// clearfix hack
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table; 
+}
+.clearfix:after {
+    clear: both;
+}
+
+// positioning
+.text-left {
+	text-align: left;
+}
+.text-right {
+	text-align: right;
+}
+.text-center {
+	text-align: center;
+}
+
+.align-left {
+	float: left !important
+}
+.align-right {
+	float: right !important;
+}
+.center-block {
+  display: block; 
+  margin-left: auto;
+  margin-right: auto; 
+}
+
+/* =Layout */
+.t-padding {
+	padding-bottom: $general-margin;
+}
+.top-margin {
+	margin-top: $general-margin;
+}
+.top-margin-x2 {
+	margin-top: $general-margin * 2;
+}
+.top-margin-dividedBy2 {
+	margin-top: $general-margin / 2;
+}
+.bottom-margin {
+	margin-bottom: $general-margin;
+}
+.border-bottom {
+	padding-bottom: 5px;
+	border-bottom: 1px solid $color-hr;
+	// margin: 0 auto;
+	// width: 80%;	
+}
+
+// narrow paragraph
+.p-narrow {
+	width: 70%;
+	margin: 0 auto;
+}
+
+// backgound colors for testing
+.bg-azzurro,
+.bg-rosso,
+.bg-verde,
+.bg-giallo,
+.bg-chiaro {
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	border: 1px solid $color-text;
+}
+
+.bg-rosso {
+	background: #FF5E3E;	
+}
+.bg-verde {
+	background: #8BC43F;
+}
+.bg-azzurro {
+	background: #6BC4E2;	
+}
+.bg-giallo {
+	background: #FFDE3D;	
+}
+.bg-chiaro {
+	background: #FAFAFA;
+	border: none;	
+}
+.bg-scuro {
+	background: $color-dark-banner;
+	border: none;	
+}
+
+.active {
+	border-bottom: 2px solid white	
+}
+.required {
+	font-size: 1.4rem;
+	margin-left: 10px;
+}
+
+.img-responsive {
+	max-width: 100% !important;
+    margin: $general-margin*2 auto 0;
+    height: auto;
+    display: block;
+
+    &:first-child {
+    	margin-top: 0;
+    }
+}
+
+.round-borders {
+	border-radius: 3%; // it was 5%
+	-moz-border-radius: 3%;
+	-webkit-border-radius: 3%;
+	border: 1px solid $color-light-text;
+}
+
+
+

@@ -1,0 +1,26 @@
+/*======================================
+=            buttons styles            =
+======================================*/
+
+
+div input.btn-primary {
+	width: 100%;
+	background-color: #202121;
+	color: $color-light-text;
+	text-transform: uppercase;
+	font-family: $font-1;
+	font-size: 1.1rem;
+	text-shadow: 0px 1px 0px $color-text;
+}
+
+.exit {
+	margin: 1em auto;
+	display: block;
+	width: 10%;
+}
+
+
+
+
+
+

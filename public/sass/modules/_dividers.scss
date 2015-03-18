@@ -1,0 +1,18 @@
+/*=======================================
+=            dividers styles            =
+=======================================*/
+
+
+
+.hr-short, hr {
+	display: block;
+	height: 1px;
+	margin: $general-margin 0;
+
+	border: none;
+	background-color: $color-hr;
+}
+.hr-short {
+	margin: $general-margin auto;
+	width: 60%;
+}

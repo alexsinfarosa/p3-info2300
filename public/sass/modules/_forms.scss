@@ -1,0 +1,99 @@
+/*====================================
+=            forms styles            =
+====================================*/
+
+
+// Removing blue glowing line 
+input[type="text"], 
+input[type="email"],
+input[type="number"],
+input[type="submit"],
+input[type="password"],
+input[type="date"],
+textarea,
+select {
+
+	width: 100%;
+	height: 50px;
+	background: transparent;
+
+
+	font-size: 1.3rem;
+	color: $color-light-text;
+	padding: 10px;
+
+
+	outline: none;
+	box-shadow:none !important;
+	border: 1px solid #CCC !important;
+
+	border-radius: 5px;
+
+}
+
+select option {
+	color: $color-light-text;
+}
+
+textarea {
+    height: 200px;
+	display: block;
+    text-align: left;
+
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+	margin-left: 5px;
+	
+	&:first-child {
+		margin-left: 0;
+	}
+
+}
+
+label {
+	font-size: 1rem;
+	color: $color-light-text;
+	cursor: pointer;
+	display: block;
+	font-weight: normal;
+	line-height: 1.5;
+	margin-bottom: 0;
+}
+
+.label-align input[type="checkbox"]{
+	margin-top: 6px;
+	margin-right: 5px;
+} 
+
+.label-align span{
+	margin: 0 0 5px 5px;
+	display: block;
+}
+
+.word-container {
+  	display: block;
+    width: 80%;
+    height: auto;
+    margin: 5px auto;
+    font-size: 1em;
+    word-break: break-all;
+    white-space: normal;
+}
+
+.message {
+	color: $color-text;
+}
+
+.input-file {
+	font-size: 1rem;
+	color: $color-light-text;
+	cursor: pointer;
+	display: block;
+	font-weight: normal;
+	line-height: 0;
+	margin-bottom: 10px;
+}
+
+

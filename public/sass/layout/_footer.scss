@@ -1,0 +1,28 @@
+/*=====================================
+=            footer styles            =
+=====================================*/
+
+
+.l-footer {
+	margin: 0 auto;
+	background: $color-dark-banner;
+}
+
+.l-list-inline {
+	margin: 0;
+	padding-top: 0;
+
+	li {
+		display: inline;
+
+	}
+}
+
+.social-icon {
+	display: inline-block;
+	color: $color-light-text;
+	width: 3rem;
+	height: 3rem;
+	font-size: 2rem;
+	text-align: center;
+}

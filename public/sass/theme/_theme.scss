@@ -1,0 +1,190 @@
+/*====================================
+=            theme styles            =
+====================================*/
+
+
+
+/* =Typography */
+body {
+	color: $color-text;
+	font: #{$base-font-size}/#{$baseline} $font-1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6, {
+	margin-bottom: 1.3125rem;
+	color: $color-text;
+	font-family: $font-2;
+	font-weight: normal;
+}
+
+h1 {
+	color: $color-text;
+	font-size: 3.375rem;
+	// line-height: 3rem;
+	// font-weight: bold;
+	// text-transform: uppercase;
+}
+h2 {
+	font-size: 2.25rem;
+	// font-weight: bold;
+}
+h3 {
+	font-size: 1.8rem;
+	color: $color-light-text;
+}
+h4 {
+	margin-bottom: 10px;
+	font-size: 1rem;
+	// font-weight: bold;
+	letter-spacing: 1px;
+}
+h5 {
+	font-family: $font-1;
+	font-size: .75rem;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+h6 {
+	font-family: $font-1;
+	font-size: .444rem;
+}
+
+blockquote cite {
+	color: $color-light-text;
+}
+
+
+/* =Header */
+li a.nav,
+li a.logo {
+	color: $color-light-text;
+
+	&:hover {
+		color: $color-nav-link-hover;
+	}
+}
+
+// LOGO
+li a.logo {
+	font-size: 1.7rem;
+	text-transform: uppercase;
+	letter-spacing: 1px
+}
+
+/* =Main */
+li a {
+	&:hover {
+		color: $color-nav-link-hover;
+	}
+}
+/* =FONTAWESOME ICONS */
+.fa {
+	font-size: 1.5rem;
+}
+.fa-twitter{
+	color: #8BC43F;
+}
+.fa-github{
+	color: #000;
+}
+
+/* =FONTASTIC ICONS */
+
+
+/* =SVG */
+svg {
+	margin:0.5rem 1.5rem;
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	border: 1px solid $color-light-text;
+}
+
+.svg-text {
+	letter-spacing: 1px;
+	// font-weight: bold;
+	font-size: 1.2rem;
+}
+
+.svg-color1 {
+	background: #105B63;
+}
+.svg-color2 {
+	background: #FFFCD3;
+}
+.svg-color3 {
+	background: #FFD34E;
+}
+.svg-color4 {
+	background: #DB9E36;
+}
+.svg-color5 {
+	background: #CE3D2E;
+}
+
+
+
+// =ITEMS COLLECTION
+.title{
+	font-family: $font-2;
+	font-size: 1.4rem;
+	// font-weight: bold;
+	color: #CE3D2E;
+	border-bottom: 1px solid $color-light-text;
+}
+
+.author {
+	font-size: 1rem;
+	font-style: italic;
+	margin: 0 4px;
+	// background: $color-hr;
+	// border-radius: 3px;
+}
+
+// TRANSITION
+.transition-L,
+.transition-R {
+	padding: 10px;
+	border-radius: 10px;
+	transition: all 1.2s ease;
+	&:hover {
+		border-radius: 10px;
+		// text-align: center;
+
+	}
+}
+
+// ALBUMS
+.album {
+	width: 250px;
+	height: 250px;
+	background: #333;
+	border-radius: 7px;
+	margin: 70px;
+	float: left;
+
+}
+
+.album-title {
+	color: white;
+	line-height: 250px;
+}
+
+figcaption {
+	margin: 0;
+	padding: 0;
+}
+
+.go-top {
+	padding: 5px;
+	background-color: #202121;
+	text-transform: uppercase;
+	border-radius: 4px;
+
+}
+

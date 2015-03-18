@@ -1,0 +1,53 @@
+/*=====================================
+=            site settings            =
+=====================================*/
+
+
+
+/* =Typography */
+$base-font-size: 18px;
+$font-1: 'Open Sans', Helvetica, Arial, sans-serif;
+$font-2: 'Raleway', sans-serif;
+
+$baseline: $base-font-size * 1.7; /* this is equivalent to the line-height */
+
+
+/* =Colors */
+$color-link: #454A4E;
+$color-link-hover: #191919;
+
+$color-text: #454A4E;
+$color-light-text: #8C9296;
+$color-dark-text: #191919;
+
+$color-text-reversed: #CCC;
+$color-light-text-reversed: #FAFAFA;
+
+$color-nav-link: #8C9296;
+$color-nav-link-hover: #CC9900;
+
+$color-hr: #EEE;
+
+$color-btn-primary: #8BC43F; 
+$color-btn-secondary: #FF5E3E;
+$color-btn-3: #6BC4E2;
+
+$color-background: #EEE;
+$color-dark-banner: #333;  // #202121
+
+$color-validation-error: red;
+$color-validation-success: green;
+
+/* =Positioning */
+$margin-multiplier: 2;
+$general-margin: ($baseline * $margin-multiplier);
+
+
+
+
+
+
+
+
+
+
