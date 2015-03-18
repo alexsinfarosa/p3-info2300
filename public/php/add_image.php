@@ -10,7 +10,7 @@
 		$image_caption = $_POST['caption'];
 		$image_date_taken = $_POST["date_taken"]; // if not selected gives 0000-00-00. Fix it!
 		
-		// Passing the selected album ids or zero if no albums are selected
+		// Passing the selected album ids. Album id=0 if no albums are selected
 		$albums_id = array();
 		if ( !empty($_POST['albumsID']) ) {
 			$albums_id = $_POST['albumsID'];
@@ -28,10 +28,10 @@
 		}
 
 		// Getting image attributes
-		$image_name = $_FILES["file_upload"]["name"];
-		$image_tmp_name = $_FILES["file_upload"]["tmp_name"];
+		$image_name 		= $_FILES["file_upload"]["name"];
+		$image_tmp_location = $_FILES["file_upload"]["tmp_name"];
 
-		//
+		
 		if (empty($image_name)) {
 			?>
 			<div class="container-extra-small text-center">
@@ -41,30 +41,28 @@
 		}
 
 		// Escaping before including them into sql. Preventing SQL injections
-		$image_caption  = mysqli_real_escape_string($mysqli, $image_caption);
-		$image_name     = mysqli_real_escape_string($mysqli, $image_name);
-		$image_tmp_name = mysqli_real_escape_string($mysqli, $image_tmp_name);
+		$image_caption  	= mysqli_real_escape_string($mysqli, $image_caption);
+		$image_name     	= mysqli_real_escape_string($mysqli, $image_name);
+		$image_tmp_location = mysqli_real_escape_string($mysqli, $image_tmp_location);
 
-		// Create directory path
-		$target  = "/home/info230/SP15/users/as898sp15/www/p3/m2/public/img/";
-		$target = $target . basename($_FILES['file_upload']['name']);
-		//($_SERVER['DOCUMENT_ROOT'].'/m2/public/img/');
-		//$upload_file = ($upload_dir . $image_name);
-		 	
+		// Placing image in destination folder
+		// $target_path_and_name  = "/home/info230/SP15/users/as898sp15/www/p3/m3/public/img/";
+		$target_path_and_name  = "/Applications/MAMP/htdocs$site_root/img/".$image_name; // YOU MUST CHANGE THIS FOR THE CORNELL SERVER
+
 		// Update the images table
-		if (move_uploaded_file($_FILES['file_upload']['tmp_name'], $target)) {
+		if (move_uploaded_file($image_tmp_location, $target_path_and_name)) {
 			$query  = "INSERT INTO images (";
-			$query .= " image_caption, image_date_taken, image_name";
+			$query .= " image_caption, image_date_taken, image_url";
 			$query .= ") VALUES (";
 			$query .= " '{$image_caption}', '{$image_date_taken}', '{$image_name}'";
 			$query .= ")";
 
-			$newImage = $mysqli -> query($query);
-			confirm_query($newImage);
+			$new_image = $mysqli -> query($query);
+			confirm_query($new_image);
 
 			$query = "SELECT MAX(image_id) FROM images";
-			$lastImageID = $mysqli -> query($query);
-			$image_set = mysqli_fetch_assoc($lastImageID);
+			$last_image = $mysqli -> query($query);
+			$image_set = mysqli_fetch_assoc($last_image);
 			$last_id = $image_set["MAX(image_id)"];
 			confirm_query($last_id);
 

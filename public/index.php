@@ -20,12 +20,18 @@
 		while($image = mysqli_fetch_assoc($image_set)) {	
 		?>
 			<figure class="text-center bottom-margin">
-				<img class="img-responsive round-borders" src="img/<?php echo $image["image_name"]; ?>" alt="<?php echo $image["image_caption"]; ?>">
+				<img class="img-responsive round-borders" src="img/<?php echo $image["image_url"]; ?>" alt="<?php echo $image["image_caption"]; ?>">
 				<figcaption>
 					<span class="author">Image Caption:</span> <?php echo $image["image_caption"]; ?>
 					<br>
 					<span class="author">Date Taken:</span> <?php echo $image["image_date_taken"]; ?>
-				</figcaption>	
+				</figcaption>
+				<li><a href="php/delete_image.php?
+			id=<?php echo $image["image_id"] ?>
+			&image_caption=<?php echo $image["image_caption"] ?>
+			&image_date_taken=<?php echo $image["image_date_taken"] ?>
+			&image_url=<?php echo $image["image_url"] ?>"
+			class="btn-primary-small"> Delete</a><li>	
 			</figure>
 		<?php  
 		}
