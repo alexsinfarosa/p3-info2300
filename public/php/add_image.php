@@ -8,6 +8,7 @@
 
 		// Getting the form values 
 		$image_caption = $_POST['caption'];
+		$image_caption = ucfirst($image_caption);
 		$image_date_taken = $_POST["date_taken"]; // if not selected gives 0000-00-00. Fix it!
 		
 		// Passing the selected album ids. Album id=0 if no albums are selected
@@ -51,15 +52,23 @@
 
 		// Update the images table
 		if (move_uploaded_file($image_tmp_location, $target_path_and_name)) {
+			
+			// Create query to insert new image in the images table
 			$query  = "INSERT INTO images (";
 			$query .= " image_caption, image_date_taken, image_url";
 			$query .= ") VALUES (";
 			$query .= " '{$image_caption}', '{$image_date_taken}', '{$image_name}'";
 			$query .= ")";
+			confirm_query($mysqli -> query($query)); // Check if errors in the query
 
-			$new_image = $mysqli -> query($query);
-			confirm_query($new_image);
+			// Query to update the Date Modified field in the albums table
+			$album_date_modified = date("y/m/d h:i:sa");
+			for ($i=0; $i < count($albums_id) ; $i++) { 
+				$query  = "UPDATE albums SET album_date_modified = '{$album_date_modified}' WHERE album_id = {$albums_id[$i]}";
+				confirm_query($mysqli -> query($query)); // Check for errors in the query
+			}
 
+			// Create query to get the last album id
 			$query = "SELECT MAX(image_id) FROM images";
 			$last_image = $mysqli -> query($query);
 			$image_set = mysqli_fetch_assoc($last_image);
@@ -73,7 +82,6 @@
 				$query .= ") VALUES (";
 				$query .= " {$last_id}, {$id}";
 				$query .= ")";
-				
 				$mysqli -> query($query);
 			}
 			

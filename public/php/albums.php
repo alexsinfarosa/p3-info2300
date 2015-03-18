@@ -21,8 +21,8 @@ if (isset($_POST["submit"])) {
 	// Create variables
 	$album_title = mysqli_real_escape_string($mysqli, $_POST["album_title"]);
 	$album_title = ucfirst($album_title);
-	$album_date_created = date("y/m/d");
-	$album_date_modified = date("y/m/d");
+	$album_date_created = date("y/m/d h:i:sa");
+	$album_date_modified = date("y/m/d h:i:sa");
 
 	// Display error if no album title
 	if (empty($album_title)) {
@@ -44,12 +44,11 @@ if (isset($_POST["submit"])) {
 	} 
 }
 
-// Perform database query
+// Perform database query to display albums
 	$query  = "SELECT * ";
 	$query .= "FROM albums ";
 	$query .= "ORDER BY album_title";
 
-	// This set is a standard array. Keys are integers
 	$album_set = mysqli_query($mysqli, $query); 
 	confirm_query($album_set);
 ?>
@@ -59,14 +58,14 @@ if (isset($_POST["submit"])) {
 	while($album = mysqli_fetch_assoc($album_set)) {	
 	?>
 		<ul class="album text-center">
-			<li><a href="imagesInAlbum.php?id=<?php echo $album["album_id"] ?>" class="album-title"><?php echo $album["album_title"]; ?></a></li>
+			<li><a href="imagesInAlbum.php?album_id=<?php echo $album["album_id"] ?>" class="album-title"><?php echo $album["album_title"]; ?></a></li>
 			<small>
 				Date Created: <?php echo $album["album_date_created"]; ?>
 				<br>
 				Date Modified: <?php echo $album["album_date_modified"]; ?>
 			</small>
 			<li><a href="delete_album.php?
-			id=<?php echo $album["album_id"] ?>
+			album_id=<?php echo $album["album_id"] ?>
 			&album_title=<?php echo $album["album_title"] ?>
 			&album_date_created=<?php echo $album["album_date_created"] ?>
 			&album_date_modified=<?php echo $album["album_date_modified"] ?>" 

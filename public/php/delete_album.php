@@ -5,9 +5,9 @@
 <?php 
 
 // Delete album from database
-if ( isset($_GET["id"]) ) {
+if ( isset($_GET["album_id"]) ) {
 
-	$album_id = $_GET["id"];
+	$album_id = $_GET["album_id"];
 	$album_title = $_GET["album_title"];
 	$album_date_created = $_GET["album_date_created"];
 	$album_date_modified = $_GET["album_date_modified"];

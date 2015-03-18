@@ -6,6 +6,7 @@
 <?php
 	$query  = "SELECT * ";
 	$query .= "FROM images ";
+	$query .= "ORDER BY image_id DESC";
 
 	$image_set = $mysqli -> query($query); 
 	
@@ -27,11 +28,11 @@
 					<span class="author">Date Taken:</span> <?php echo $image["image_date_taken"]; ?>
 				</figcaption>
 				<li><a href="php/delete_image.php?
-			id=<?php echo $image["image_id"] ?>
-			&image_caption=<?php echo $image["image_caption"] ?>
-			&image_date_taken=<?php echo $image["image_date_taken"] ?>
-			&image_url=<?php echo $image["image_url"] ?>"
-			class="btn-primary-small"> Delete</a><li>	
+					image_id=<?php echo $image["image_id"] ?>
+					&image_caption=<?php echo $image["image_caption"] ?>
+					&image_date_taken=<?php echo $image["image_date_taken"] ?>
+					&image_url=<?php echo $image["image_url"] ?>"
+					class="btn-primary-small"> Delete</a><li>	
 			</figure>
 		<?php  
 		}

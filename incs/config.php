@@ -17,4 +17,6 @@ if ( mysqli_connect_errno() ) {
 	);
 }
 
+date_default_timezone_set("America/New_York");
+
 ?>
