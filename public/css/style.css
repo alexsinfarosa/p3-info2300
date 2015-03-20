@@ -907,8 +907,8 @@ h3 {
 
 h4 {
   margin-bottom: 10px;
-  font-size: 1rem;
-  letter-spacing: 1px; }
+  font-size: 1.4rem;
+  color: #454a4e; }
 
 h5 {
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
@@ -1012,7 +1012,7 @@ svg {
   margin: 80px auto; }
 
 .album-title {
-  color: white;
+  color: #8c9296;
   line-height: 250px; }
 
 figcaption {

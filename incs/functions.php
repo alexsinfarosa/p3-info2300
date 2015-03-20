@@ -7,7 +7,7 @@ function add_registered_user ($name, $by, $status, $rating) {
 
 // It allows to insert only particular characters into the input fields
 function check_input($data) {
-	$data = preg_replace("#[^0-9a-z\-\+\.]#i"," ", $data);
+	$data = preg_replace("#[^0-9a-z\-\+\.?\!]#i"," ", $data);
     $data = trim($data);
     $data = stripslashes($data);
     $data = filter_var($data, FILTER_SANITIZE_STRING);
@@ -15,31 +15,9 @@ function check_input($data) {
     return $data;
 }
 
-// Retreive old value
-function old($key) {
-	if ( !empty($_POST[$key]) ) {
-		return htmlspecialchars( $_POST[$key] );
-	}
-	return '';
-}
-
 // EMAIL FILTER
 function valid_email($email) {
 	return filter_var($email, FILTER_VALIDATE_EMAIL); #returns true or false
-}
-
-// Displaying ERRORS
-function form_errors( $errors=array() ) {
-	$output = "";
-	if ( !empty($errors) ) {
-		$output .= "<h3>Please fix the following errors:</h3>";
-		$output .= "<ul>";
-		foreach ($errors as $key => $error) {
-			$output .= "<li>$error</li>";
-		}
-		$output .= "<ul>";
-	}
-	return $output;
 }
 
 // Confirm query
@@ -50,11 +28,33 @@ function confirm_query($result) {
 	}
 }
 
+// Preparing data before insert it into mysql
+function mysql_prep($string) {
+		global $mysqli;		
+		$escaped_string = mysqli_real_escape_string($mysqli, $string);
+		return $escaped_string;
+}
+
 // Redirect
 function redirect_to($new_location) {
 	header("Location: ", $new_location);
 	exit;
 }
 
+// Form errors
+function form_errors( $errors = array() ) {
+	$output = "";
+	if ( !empty($errors) ) {
+		$output .= "<div class=\"errors\">";
+		$output .= "Please fix the following errors:";
+		$output .= "<ul>";
+		foreach ($errors as $key => $error) {
+			$output .= "<li>{$error}</li>";
+		}
+		$output .= "</ul>";
+		$output .= "</div>";
+	}
+	return $output;
+}
 
 ?>

@@ -1,9 +1,50 @@
+<?php require_once '../../incs/session.php'; ?> 
 <?php require_once '../../incs/config.php'; ?> 
 <?php require_once '../../incs/functions.php'; ?>
+<?php require_once '../../incs/validation_functions.php'; ?>
 <?php include '../../incs/layout/header.php'; ?>
 
+<?php  
+// Creating new album
+if (isset($_POST["submit"])) {
+
+	// Create variables
+	$album_title = check_input($_POST["album_title"]);
+	$album_title = ucfirst($album_title);
+	$album_date_created = date("y/m/d h:i:sa");
+	$album_date_modified = date("y/m/d h:i:sa");
+
+	// Validation
+	$fields_required = array("album_title");
+	validate_presences($fields_required);
+
+	$fields_with_max_lengths = array("album_title" => 20);
+	validate_max_lengths($fields_with_max_lengths); 
+
+	// Errors
+	if (!empty($errors)) {
+		$_SESSION["errors"] = $errors;
+		// redirect_to("albums.php");
+	} else {
+		// Updating the database
+		$query  = "INSERT INTO albums (";
+		$query .= " album_title, album_date_created, album_date_modified";
+		$query .= ") VALUES (";
+		$query .= " '{$album_title}','{$album_date_created}','{$album_date_modified}'";
+		$query .= ")";
+
+		$new_album = $mysqli -> query($query);
+	 
+	}
+}
+
+?>
 <!-- ADD NEW ALBUM -->
-<div class="container-small">
+<div class="container-small text-center">
+	
+	<!-- Display errors --> 
+	<?php echo form_errors($errors) ?>
+
 	<form action="albums.php" method="POST">
 			<div class="col-9">
 				<input type="text" name="album_title" value="" placeholder="Album title">
@@ -14,36 +55,7 @@
 	</form>
 </div>
 
-<?php  
-// Creating new album
-if (isset($_POST["submit"])) {
-
-	// Create variables
-	$album_title = mysqli_real_escape_string($mysqli, $_POST["album_title"]);
-	$album_title = ucfirst($album_title);
-	$album_date_created = date("y/m/d h:i:sa");
-	$album_date_modified = date("y/m/d h:i:sa");
-
-	// Display error if no album title
-	if (empty($album_title)) {
-		?>
-		<div class="container-extra-small text-center">
-			<?php echo "Sorry, album title cannot be empty"; ?>
-		</div>
-		<?php
-	} else {
-
-	// Updating the database
-	$query  = "INSERT INTO albums (";
-	$query .= " album_title, album_date_created, album_date_modified";
-	$query .= ") VALUES (";
-	$query .= " '{$album_title}','{$album_date_created}','{$album_date_modified}'";
-	$query .= ")";
-
-	$new_album = $mysqli -> query($query);
-	} 
-}
-
+<?php
 // Perform database query to display albums
 	$query  = "SELECT * ";
 	$query .= "FROM albums ";

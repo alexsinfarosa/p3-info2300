@@ -1,5 +1,7 @@
+<?php require_once '../../incs/session.php'; ?> 
 <?php require_once '../../incs/config.php'; ?> 
 <?php require_once '../../incs/functions.php'; ?>
+<?php require_once '../../incs/validation_functions.php'; ?>
 <?php include '../../incs/layout/header.php'; ?>
 
 

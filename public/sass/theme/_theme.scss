@@ -39,9 +39,10 @@ h3 {
 }
 h4 {
 	margin-bottom: 10px;
-	font-size: 1rem;
+	font-size: 1.4rem;
+	color: $color-text;
 	// font-weight: bold;
-	letter-spacing: 1px;
+	// letter-spacing: 1px;
 }
 h5 {
 	font-family: $font-1;
@@ -175,7 +176,7 @@ svg {
 }
 
 .album-title {
-	color: white;
+	color: $color-light-text;
 	line-height: 250px;
 }
 
