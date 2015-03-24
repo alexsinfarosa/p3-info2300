@@ -4,12 +4,15 @@
 <?php require_once '../../incs/validation_functions.php'; ?>
 <?php include '../../incs/layout/header.php'; ?>
 
-
-<?php 	
+<?php foreach(array_keys($_SESSION) as $k) unset($_SESSION[$k]); ?>
+<?php 
+$username = "";	
 	if ( isset($_POST["submit"]) ) {
 
 		$username = trim($_POST["username"]);
 		$password = trim($_POST["password"]);
+	
+		$_SESSION[ 'logged_user' ] = $username;
 
 		// Validation
 		$fields_required = array("username", "password");
@@ -18,18 +21,22 @@
 		$fields_with_max_lengths = array("username" => 15, "password" => 15);
 		validate_max_lengths($fields_with_max_lengths);
 
-		// Try to LOGIN
-		if ( empty($errors) ) {
-			if ($username == "alex" && $password == "password") {
-				// Succesfull login
-				$message = "Hello ". $username . "!";
-				// redirect_to("#");
-			} else {
-				$message = "Username/password do not match.";
-			}
+		$query  = "SELECT * ";
+		$query .= "FROM logins ";
+		$query .= "WHERE username = '{$username}' AND password = '{$password}'";
+
+		$user_set = $mysqli -> query($query); 
+		
+		// Check for query errrors
+		confirm_query($user_set);
+
+		$user = mysqli_fetch_assoc($user_set);
+
+		if ( $user['username'] == "alex" && $user['password'] == 'password') {
+			$message = "Hello ". $username . "!";
+		} else {
+			$message = "Username/password do not match.";
 		}
-	} else {
-		$username = "";
 	}
  ?>
 
@@ -43,19 +50,19 @@
 		<?php echo form_errors($errors) ?>
 		<?php echo "<h3>$message</h3>"; ?>
 		
-		<form action="#" method="POST">
+		<form action="../index.php" method="POST">
 			<div class="col-5">
 				<input type="text" name="username" value="<?php htmlspecialchars($username); ?>" placeholder="username">
 			</div>
 			<div class="col-5">
 				<input type="password" name="password" value="" placeholder="password">
 			</div>
-			<div class="col-2"> 
+			<div class="col-2 text-left"> 
 				<input class="btn-primary" type="submit" name="submit" value="LOGIN" >
 			</div>
 		</form>
 	</div>
 </div>
 
-
+<?php session_destroy(); ?>
 <?php include '../../incs/layout/footer.php'; ?>

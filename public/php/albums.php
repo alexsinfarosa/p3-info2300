@@ -5,10 +5,8 @@
 <?php include '../../incs/layout/header.php'; ?>
 
 <?php  
-// Creating new album
-if (isset($_POST["submit"])) {
-
-	// Create variables
+// ADDING NEW album
+if ( isset($_POST["submit"]) ) {
 	$album_title = check_input($_POST["album_title"]);
 	$album_title = ucfirst($album_title);
 	$album_date_created = date("y/m/d h:i:sa");
@@ -32,10 +30,44 @@ if (isset($_POST["submit"])) {
 		$query .= ") VALUES (";
 		$query .= " '{$album_title}','{$album_date_created}','{$album_date_modified}'";
 		$query .= ")";
-
-		$new_album = $mysqli -> query($query);
-	 
+		confirm_query($mysqli -> query($query)); // Check if errors in the query	 
 	}
+} // END add new album
+
+// EDIT album
+if (isset($_POST["edit_title"])) {
+	$album_date_modified = date("y/m/d h:i:sa");
+	$album_id =  $_POST["album_id"];
+	$album_title_edited = check_input($_POST["album_title_edited"]);
+	$album_title_edited = ucfirst($album_title_edited);
+
+	// Validation
+	$fields_required = array("album_title_edited");
+	validate_presences($fields_required);
+
+	$fields_with_max_lengths = array("album_title_edited" => 20);
+	validate_max_lengths($fields_with_max_lengths); 
+
+	// Errors
+	if (!empty($errors)) {
+		$_SESSION["errors"] = $errors;
+		// redirect_to("albums.php");
+	} else {
+		$query  = "UPDATE albums SET ";
+		$query .= "album_date_modified = '{$album_date_modified}', album_title = '{$album_title_edited}' "; 
+		$query .= "WHERE album_id = $album_id";
+		confirm_query($mysqli -> query($query)); // Check if errors in the query
+	}
+} // END edit album
+
+// DELETE album
+if (isset($_POST["delete"])) {
+$album_id =  $_POST["album_id"];
+
+$query  = "DELETE ";
+$query .= "FROM albums ";
+$query .= "WHERE album_id = $album_id";
+confirm_query($mysqli -> query($query)); // Check if errors in the query
 }
 
 ?>
@@ -45,7 +77,7 @@ if (isset($_POST["submit"])) {
 	<!-- Display errors --> 
 	<?php echo form_errors($errors) ?>
 
-	<form action="albums.php" method="POST">
+	<form id="add_album" action="albums.php" method="POST">
 			<div class="col-9">
 				<input type="text" name="album_title" value="" placeholder="Album title">
 			</div>
@@ -68,25 +100,48 @@ if (isset($_POST["submit"])) {
 <div class="container">
 	<?php 
 	while($album = mysqli_fetch_assoc($album_set)) {	
+	if ($album['album_id'] != 0) {
 	?>
-		<ul class="album text-center">
-			<li><a href="imagesInAlbum.php?album_id=<?php echo $album["album_id"] ?>" class="album-title"><?php echo $album["album_title"]; ?></a></li>
-			<small>
-				Date Created: <?php echo $album["album_date_created"]; ?>
-				<br>
-				Date Modified: <?php echo $album["album_date_modified"]; ?>
-			</small>
-			<li><a href="delete_album.php?
-			album_id=<?php echo $album["album_id"] ?>
-			&album_title=<?php echo $album["album_title"] ?>
-			&album_date_created=<?php echo $album["album_date_created"] ?>
-			&album_date_modified=<?php echo $album["album_date_modified"] ?>" 
-			class="btn-primary-small"> Delete</a><li>
-		</ul>
-	<?php  
+		<div class="album text-center">
+			<!-- block -->
+			<a class="album-title" href="imagesInAlbum.php?album_id=<?php echo $album["album_id"] ?>"><?php echo $album["album_title"]; ?></a><br>
+			
+			<!-- dates -->
+			<span class="dates">Date Created: <?php echo $album["album_date_created"]; ?></span><br>
+			<span class="dates">Date Modified: <?php echo $album["album_date_modified"]; ?></span>
+			
+			<!-- DELETE button -->
+			<form action="albums.php" method="POST">
+				<div class="col-6 text-left">
+					<input class="btn-primary-album" type="submit" name="delete" value="Delete">
+					<input type="hidden" name="album_id" value="<?php echo $album["album_id"]; ?>">
+				</div>
+			</form>
+			
+			<!-- EDIT button -->
+			<div class="col-6 text-right">
+				<form action="#" method="POST">
+					<input class="edit btn-primary-album" type="submit" name="edit" value="Edit">
+					<input type="hidden" name="image_id" value="<?php echo $_SESSION['image_id'] = $image["image_id"]; ?>">
+				</form>
+			   <!-- <a href="#" class="edit btn-primary-small">Edit</a> -->
+			</div>
+		   	<div class="col-12 reveal_field">
+			   	<form action="albums.php" method="POST">
+				   	<div class="col-9">
+				   		<input type="text" name="album_title_edited" value="" placeholder="Edit title">
+				   	</div>
+				   	<div class="col-3">
+				   		<input class="btn-primary" type="submit" name="edit_title" value="+">
+				      	<input type="hidden" name="album_id" value="<?php echo $album["album_id"]; ?>">
+				    </div>
+			   	</form>
+		   </div>
+
+		</div> <!-- end album --> 
+	<?php 
+	} 
 	}
 	?>
-</div>
-
-
+</div> <!-- end container --> 
 <?php include '../../incs/layout/footer.php'; ?>

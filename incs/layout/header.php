@@ -36,6 +36,7 @@
 			<li><a class="nav" href="<?php echo $site_root; ?>/php/add_image.php">Add image</a></li>
 			<li><a class="nav" href="<?php echo $site_root; ?>/php/albums.php">Albums</a></li>
 			<li><a class="nav" href="<?php echo $site_root; ?>/php/login.php">Log in</a></li>
+			<!-- <li><a class="nav user" ><?php echo $_SESSION[ 'logged_user' ]; ?></a></li> -->
 		</ul>
 	</nav>
 

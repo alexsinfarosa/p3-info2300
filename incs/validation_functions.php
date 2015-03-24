@@ -1,8 +1,5 @@
 <?php
-
-$errors  = array();
-$message = "";
-
+$errors = array();
 // Retreive old value
 function old($key) {
 	if ( !empty($_POST[$key]) ) {
@@ -57,5 +54,20 @@ function has_inclusion_in($value, $set) {
 	return in_array($value, $set);
 }
 
+// Form errors
+function form_errors( $errors ) {
+	$output = "";
+	if ( !empty($errors) ) {
+		$output .= "<div class=\"errors\">";
+		$output .= "Please fix the following errors:";
+		$output .= "<ul>";
+		foreach ($errors as $key => $error) {
+			$output .= "<li>{$error}</li>";
+		}
+		$output .= "</ul>";
+		$output .= "</div>";
+	}
+	return $output;
+}
 
 ?>

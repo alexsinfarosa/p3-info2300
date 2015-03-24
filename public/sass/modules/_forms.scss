@@ -7,7 +7,7 @@
 input[type="text"], 
 input[type="email"],
 input[type="number"],
-input[type="submit"],
+// input[type="submit"],
 input[type="password"],
 input[type="date"],
 textarea,
@@ -24,22 +24,15 @@ select {
 
 
 	outline: none;
-	box-shadow:none !important;
-	border: 1px solid #CCC !important;
+	box-shadow:none;
+	border: 1px solid #CCC; 
 
 	border-radius: 5px;
 
 }
-
-select option {
-	color: $color-light-text;
-}
-
-textarea {
-    height: 200px;
-	display: block;
-    text-align: left;
-
+input[type="button"] {
+	outline: none;
+	box-shadow: none;
 }
 
 input[type="radio"],
@@ -50,6 +43,20 @@ input[type="checkbox"] {
 		margin-left: 0;
 	}
 
+}
+button {
+	margin: 0;
+	padding: 0;
+}
+
+select option {
+	color: $color-light-text;
+}
+
+textarea {
+    height: 200px;
+	display: block;
+    text-align: left;
 }
 
 label {
@@ -70,6 +77,12 @@ label {
 .label-align span{
 	margin: 0 0 5px 5px;
 	display: block;
+}
+
+.label-align-horizontal span{
+	float: left;
+	margin: -5px 10px 5px;
+
 }
 
 .word-container {

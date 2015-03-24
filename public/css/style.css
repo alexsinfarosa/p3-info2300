@@ -746,24 +746,51 @@ nav ul {
 /*======================================
 =            buttons styles            =
 ======================================*/
-div input.btn-primary {
+.btn-primary {
   width: 100%;
+  height: 50px;
+  padding: 2px;
   background-color: #202121;
   color: #8c9296;
   text-transform: uppercase;
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  font-size: 1.1rem;
-  text-shadow: 0px 1px 0px #454a4e; }
+  font-size: 1rem;
+  text-shadow: 0px 1px 0px #8c9296;
+  border-radius: 7px;
+  outline: none;
+  box-shadow: none; }
+  .btn-primary:hover {
+    color: #cc9900; }
 
-a.btn-primary-small {
-  width: 30%;
-  padding: 3px 9px;
+.btn-primary-album {
+  width: 60%;
+  padding: 2px;
   background-color: #202121;
   color: #8c9296;
   text-transform: uppercase;
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  font-size: 0.9rem;
-  border-radius: 5px; }
+  font-size: 0.8rem;
+  text-shadow: 0px 1px 0px #8c9296;
+  border-radius: 7px;
+  outline: none;
+  box-shadow: none; }
+  .btn-primary-album:hover {
+    color: #cc9900; }
+
+.btn-primary-small {
+  width: 15%;
+  padding: 2px;
+  background-color: #202121;
+  color: #8c9296;
+  text-transform: uppercase;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  text-shadow: 0px 1px 0px #8c9296;
+  border-radius: 7px;
+  outline: none;
+  box-shadow: none; }
+  .btn-primary-small:hover {
+    color: #cc9900; }
 
 .exit {
   margin: 1em auto;
@@ -799,7 +826,6 @@ iframe {
 input[type="text"],
 input[type="email"],
 input[type="number"],
-input[type="submit"],
 input[type="password"],
 input[type="date"],
 textarea,
@@ -811,9 +837,24 @@ select {
   color: #8c9296;
   padding: 10px;
   outline: none;
-  box-shadow: none !important;
-  border: 1px solid #CCC !important;
+  box-shadow: none;
+  border: 1px solid #CCC;
   border-radius: 5px; }
+
+input[type="button"] {
+  outline: none;
+  box-shadow: none; }
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin-left: 5px; }
+  input[type="radio"]:first-child,
+  input[type="checkbox"]:first-child {
+    margin-left: 0; }
+
+button {
+  margin: 0;
+  padding: 0; }
 
 select option {
   color: #8c9296; }
@@ -822,13 +863,6 @@ textarea {
   height: 200px;
   display: block;
   text-align: left; }
-
-input[type="radio"],
-input[type="checkbox"] {
-  margin-left: 5px; }
-  input[type="radio"]:first-child,
-  input[type="checkbox"]:first-child {
-    margin-left: 0; }
 
 label {
   font-size: 1rem;
@@ -846,6 +880,10 @@ label {
 .label-align span {
   margin: 0 0 5px 5px;
   display: block; }
+
+.label-align-horizontal span {
+  float: left;
+  margin: -5px 10px 5px; }
 
 .word-container {
   display: block;
@@ -937,8 +975,10 @@ li a.logo {
   letter-spacing: 1px; }
 
 /* =Main */
-li a:hover {
-  color: #cc9900; }
+div a, span a {
+  margin-left: 10px; }
+  div a:hover, span a:hover {
+    color: #cc9900; }
 
 /* =FONTAWESOME ICONS */
 .fa {
@@ -998,13 +1038,13 @@ svg {
   .transition-R:hover {
     border-radius: 10px; }
 
-.album,
+div .album,
 .album-centered {
   width: 250px;
   height: 250px;
   background: #333;
   border-radius: 7px;
-  margin: 70px;
+  margin: 120px 70px;
   float: left; }
 
 .album-centered {
@@ -1015,6 +1055,11 @@ svg {
   color: #8c9296;
   line-height: 250px; }
 
+figure {
+  margin: 4rem 1rem; }
+  figure:first-child {
+    margin: 0 1rem; }
+
 figcaption {
   margin: 0;
   padding: 0; }
@@ -1024,3 +1069,20 @@ figcaption {
   background-color: #202121;
   text-transform: uppercase;
   border-radius: 4px; }
+
+a.album-title {
+  text-decoration: none;
+  color: #8c9296; }
+
+li a.user {
+  text-transform: uppercase;
+  color: white;
+  font-size: 1.2rem; }
+  li a.user:hover {
+    color: white; }
+
+.dates {
+  font-size: 0.8rem; }
+
+div.reveal_field {
+  display: none; }

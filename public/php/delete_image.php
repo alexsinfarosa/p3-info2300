@@ -3,24 +3,24 @@
 <?php require_once '../../incs/functions.php'; ?>
 <?php include '../../incs/layout/header.php'; ?>
 
-<?php 
+<?php 	
 // Delete album from database
-if ( isset($_GET["image_id"]) ) {
+if ( isset($_POST["delete"]) ) {
 
-	$image_id = $_GET["image_id"];
-	$image_caption = $_GET["image_caption"];
-	$image_date_taken = $_GET["image_date_taken"];
-	$image_url = $_GET["image_url"];
+	$image_id 			= $_SESSION['image_id'];
+	$image_caption 		= $_SESSION['image_caption'];
+	$image_date_taken 	= $_SESSION['image_date_taken'];
+	$image_url 			= $_SESSION['image_url'];
 
 	$query  = "DELETE ";
 	$query .= "FROM images ";
 	$query .= "WHERE image_id = $image_id";
 
 	$deleted_image = $mysqli -> query($query);
-}
+
 	// Check for query errrors
 	confirm_query($deleted_image);
-
+}
 ?>
 <div class="container text-center">
 	<h3>The image below has been deleted.</h3>

@@ -78,7 +78,8 @@ li a.logo {
 }
 
 /* =Main */
-li a {
+div a, span a {
+	margin-left: 10px;
 	&:hover {
 		color: $color-nav-link-hover;
 	}
@@ -161,13 +162,13 @@ svg {
 }
 
 // ALBUMS
-.album, 
+div .album, 
 .album-centered {
 	width: 250px;
 	height: 250px;
 	background: #333;
 	border-radius: 7px;
-	margin: 70px;
+	margin: 120px 70px;
 	float: left;
 }
 .album-centered {
@@ -179,7 +180,13 @@ svg {
 	color: $color-light-text;
 	line-height: 250px;
 }
-
+figure {
+	margin: 4rem 1rem;
+	
+	&:first-child {
+		margin: 0 1rem;
+	}
+}
 figcaption {
 	margin: 0;
 	padding: 0;
@@ -191,5 +198,26 @@ figcaption {
 	text-transform: uppercase;
 	border-radius: 4px;
 
+}
+
+a.album-title{
+	text-decoration: none;
+	color: $color-light-text;
+} 
+
+ li a.user {
+ 	text-transform: uppercase;
+ 	color: white;
+ 	font-size: 1.2rem;
+
+ 	&:hover {
+		color: white;
+	}	
+}
+.dates {
+	font-size: 0.8rem;
+}
+div.reveal_field {
+	display: none;
 }
 
