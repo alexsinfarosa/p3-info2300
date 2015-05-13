@@ -1,4 +1,4 @@
-<?php $site_root = "/m3/public"; ?>
+<?php $site_root = "/project3-CS2300"; ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
