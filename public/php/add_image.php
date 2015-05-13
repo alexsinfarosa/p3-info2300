@@ -9,6 +9,8 @@
 
 		// Getting the form values 
 		$image_caption = $_POST['caption'];
+		$image_caption = mysqli_real_escape_string($mysqli, $image_caption);
+		$image_caption = check_input($image_caption);
 		$image_caption = ucfirst($image_caption);
 		$image_date_taken = $_POST["date_taken"]; // if not selected gives 0000-00-00. Remember to fix it!
 
@@ -52,8 +54,8 @@
 			}
 
 			// Placing image in destination folder
-			// $target_path_and_name  = "/home/info230/SP15/users/as898sp15/www/p3/m3/public/img/";
-			$target_path_and_name  = "/Applications/MAMP/htdocs$site_root/img/".$image_name; // YOU MUST CHANGE THIS FOR THE CORNELL SERVER
+			$target_path_and_name  = "/home/info230/SP15/users/as898sp15/www/p3/m3/public/img/".$image_name;
+			// $target_path_and_name  = "/Applications/MAMP/htdocs$site_root/img/".$image_name; // YOU MUST CHANGE THIS FOR THE CORNELL SERVER
 
 			// Update the images table
 			if (move_uploaded_file($image_tmp_location, $target_path_and_name)) {

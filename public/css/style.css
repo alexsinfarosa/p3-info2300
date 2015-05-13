@@ -1086,3 +1086,14 @@ li a.user {
 
 div.reveal_field {
   display: none; }
+
+a#message {
+  margin-bottom: 1.3125rem;
+  font-family: "Raleway", sans-serif;
+  font-weight: normal;
+  font-size: 1.3rem;
+  color: #8c9296;
+  text-decoration: none;
+  border-bottom: 1px solid #8c9296; }
+  a#message:hover {
+    color: #cc9900; }

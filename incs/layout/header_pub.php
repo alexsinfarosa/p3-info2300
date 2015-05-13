@@ -30,12 +30,11 @@
 	<!-- HEADER -->
 	<nav class="col-12 bg-scuro bottom-margin">
 		<ul class="col-3">
-			<li><a class="logo" href="<?php echo $site_root; ?>/php/admin.php">Scanna</a></li>
+			<li><a class="logo" href="<?php echo $site_root; ?>/index.php">Scanna</a></li>
 		</ul>
 		<ul class="col-9 text-right">
-			<li><a class="nav" href="<?php echo $site_root; ?>/php/add_image.php">Add image</a></li>
-			<li><a class="nav" href="<?php echo $site_root; ?>/php/albums.php">Albums</a></li>
-			<li><a class="nav" href="<?php echo $site_root; ?>/php/logout.php">Logout</a></li>
+			<li><a class="nav" href="<?php echo $site_root; ?>/php/albums_pub.php">Albums</a></li>
+			<li><a class="nav" href="<?php echo $site_root; ?>/php/login.php">Login</a></li>
 			<!-- <li><a class="nav user" ><?php echo $_SESSION[ 'logged_user' ]; ?></a></li> -->
 		</ul>
 	</nav>

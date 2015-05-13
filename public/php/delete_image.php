@@ -7,10 +7,10 @@
 // Delete album from database
 if ( isset($_POST["delete"]) ) {
 
-	$image_id 			= $_SESSION['image_id'];
-	$image_caption 		= $_SESSION['image_caption'];
-	$image_date_taken 	= $_SESSION['image_date_taken'];
-	$image_url 			= $_SESSION['image_url'];
+	$image_id 			= $_POST['image_id'];
+	$image_caption 		= $_POST['image_caption'];
+	$image_date_taken 	= $_POST['image_date_taken'];
+	$image_url 			= $_POST['image_url'];
 
 	$query  = "DELETE ";
 	$query .= "FROM images ";
